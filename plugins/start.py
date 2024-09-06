@@ -65,7 +65,7 @@ async def start_command(client: Client, message: Message):
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-            await message.reply(f"Your token successfully verified and valid for: 24 Hour", reply_markup=reply_markup, protect_content=False, quote=True)
+            await message.reply(f"🍀Your token successfully verified and valid for: 24 Hour", reply_markup=reply_markup, protect_content=False, quote=True)
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
@@ -122,7 +122,7 @@ async def start_command(client: Client, message: Message):
                     await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 except:
                     pass
-            SD = await message.reply_text("⚠️Baka! Files will be deleted After 10min. Save them to the Saved Message now ⚠💢")
+            SD = await message.reply_text("⚠️𝗙𝗶𝗹𝗲𝘀 𝘄𝗶𝗹𝗹 𝗯𝗲 𝗱𝗲𝗹𝗲𝘁𝗲𝗱 𝗔𝗳𝘁𝗲𝗿 10 𝗺𝗶𝗻𝘀 𝘁𝗼 𝗮𝘃𝗼𝗶𝗱 𝗰𝗼𝗽𝘆𝗿𝗶𝗴𝗵𝘁𝘀. 𝗦𝗮𝘃𝗲 𝘁𝗵𝗲 𝗳𝗶𝗹𝗲𝘀 𝘁𝗼 𝗦𝗼𝗺𝗲𝘄𝗵𝗲𝗿𝗲 𝗲𝗹𝘀𝗲⚠💢")
             await asyncio.sleep(SECONDS)
 
             for snt_msg in snt_msgs:
@@ -160,7 +160,7 @@ async def start_command(client: Client, message: Message):
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API,f'https://telegram.dog/{client.username}?start=verify_{token}')
                 btn = [
-                    [InlineKeyboardButton("Click here", url=link)],
+                    [InlineKeyboardButton("Click here to Continue", url=link)],
                     [InlineKeyboardButton('How to use the bot', url=full_tut_url)]
                 ]
                 await message.reply(f"Hey, your ads token has expired! Just refresh it and try again..\n\nBy the way, the token times out after 24 hours.\n\nSo, what's this token thingy?\n\nIt's an ads token, dude! If you watch just one ad, you can use the bot for a whole 24 hours after that. Sweet deal, right?", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
