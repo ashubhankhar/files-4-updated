@@ -163,7 +163,7 @@ async def start_command(client: Client, message: Message):
                     [InlineKeyboardButton("Click here to Continue", url=link)],
                     [InlineKeyboardButton('How to use the bot', url=full_tut_url)]
                 ]
-                await message.reply(f"Hey, your ads token has expired! Just refresh it and try again..\n\nBy the way, the token times out after 24 hours.\n\nSo, what's this token thingy?\n\nIt's an ads token, dude! If you watch just one ad, you can use the bot for a whole 24 hours after that. Sweet deal, right?", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"𝐇𝐞𝐲, 𝐲𝐨𝐮𝐫 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧 𝐡𝐚𝐬 𝐞𝐱𝐩𝐢𝐫𝐞𝐝! 𝐉𝐮𝐬𝐭 𝐫𝐞𝐟𝐫𝐞𝐬𝐡 𝐢𝐭 𝐚𝐧𝐝 𝐭𝐫𝐲 𝐚𝐠𝐚𝐢𝐧..\n\n𝐁𝐲 𝐭𝐡𝐞 𝐰𝐚𝐲, 𝐭𝐡𝐞 𝐭𝐨𝐤𝐞𝐧 𝐭𝐢𝐦𝐞𝐬 𝐨𝐮𝐭 𝐚𝐟𝐭𝐞𝐫 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬.\n\n𝐒𝐨, 𝐰𝐡𝐚𝐭'𝐬 𝐭𝐡𝐢𝐬 𝐭𝐨𝐤𝐞𝐧 𝐭𝐡𝐢𝐧𝐠𝐲?\n\n𝐈𝐭'𝐬 𝐚𝐧 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧, 𝐝𝐮𝐝𝐞! 𝐈𝐟 𝐲𝐨𝐮 𝐰𝐚𝐭𝐜𝐡 𝐣𝐮𝐬𝐭 𝐨𝐧𝐞 𝐚𝐝, 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭 𝐟𝐨𝐫 𝐚 𝐰𝐡𝐨𝐥𝐞 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬 𝐚𝐟𝐭𝐞𝐫 𝐭𝐡𝐚𝐭. 𝐒𝐰𝐞𝐞𝐭 𝐝𝐞𝐚𝐥, 𝐫𝐢𝐠𝐡𝐭?", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
 
 # ... (rest of the code remains unchanged))
 
