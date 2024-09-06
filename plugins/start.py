@@ -1,12 +1,12 @@
-# https://www.youtube.com/channel/UC7tAa4hho37iNv731_6RIOg
-import asyncio
-import base64
+#(©)Codeflix_Bots
+
 import logging
-import os
+import base64
 import random
 import re
 import string
 import time
+import asyncio
 
 from pyrogram import Client, filters, __version__
 from pyrogram.enums import ParseMode
@@ -32,9 +32,6 @@ from helper_func import subscribed, encode, decode, get_messages, get_shortlink,
 from database.database import add_user, del_user, full_userbase, present_user
 from shortzy import Shortzy
 
-"""add time in seconds for waiting before delete 
-1 min = 60, 2 min = 60 × 2 = 120, 5 min = 60 × 5 = 300"""
-SECONDS = int(os.getenv("SECONDS", "600"))
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -102,7 +99,9 @@ async def start_command(client: Client, message: Message):
                 await message.reply_text("Something went wrong..!")
                 return
             await temp_msg.delete()
-
+            
+            snt_msgs = []
+            
             for msg in messages:
                 if bool(CUSTOM_CAPTION) & bool(msg.document):
                     caption = CUSTOM_CAPTION.format(previouscaption="" if not msg.caption else msg.caption.html, filename=msg.document.file_name)
@@ -115,15 +114,18 @@ async def start_command(client: Client, message: Message):
                     reply_markup = None
 
                 try:
-                    await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                    snt_msg = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                     await asyncio.sleep(0.5)
+                    snt_msgs.append(snt_msg)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
-                    await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                    snt_msg = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                    snt_msgs.append(snt_msg)
                 except:
                     pass
+
             SD = await message.reply_text("⚠️𝗙𝗶𝗹𝗲𝘀 𝘄𝗶𝗹𝗹 𝗯𝗲 𝗱𝗲𝗹𝗲𝘁𝗲𝗱 𝗔𝗳𝘁𝗲𝗿 10 𝗺𝗶𝗻𝘀 𝘁𝗼 𝗮𝘃𝗼𝗶𝗱 𝗰𝗼𝗽𝘆𝗿𝗶𝗴𝗵𝘁𝘀. 𝗦𝗮𝘃𝗲 𝘁𝗵𝗲 𝗳𝗶𝗹𝗲𝘀 𝘁𝗼 𝗦𝗼𝗺𝗲𝘄𝗵𝗲𝗿𝗲 𝗲𝗹𝘀𝗲⚠💢")
-            await asyncio.sleep(SECONDS)
+            await asyncio.sleep(600)
 
             for snt_msg in snt_msgs:
                 try:
@@ -131,11 +133,10 @@ async def start_command(client: Client, message: Message):
                     await SD.delete()
                 except:
                     pass
-            return     
 
         elif verify_status['is_verified']:
             reply_markup = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("ℹ️ About Me", callback_data="about"),
+                [[InlineKeyboardButton("About Me", callback_data="about"),
                   InlineKeyboardButton("Close", callback_data="close")]]
             )
             await message.reply_text(
@@ -155,36 +156,27 @@ async def start_command(client: Client, message: Message):
             verify_status = await get_verify_status(id)
             if IS_VERIFY and not verify_status['is_verified']:
                 short_url = f"api.shareus.io"
-                full_tut_url = f"https://t.me/korean_dramas_bot_Dramafilez/9"
+                TUT_VID = f"https://t.me/korean_dramas_bot_Dramafilez/9"
                 token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API,f'https://telegram.dog/{client.username}?start=verify_{token}')
                 btn = [
-                    [InlineKeyboardButton("Click here to Continue", url=link)],
-                    [InlineKeyboardButton('How to use the bot', url=full_tut_url)]
+                  [InlineKeyboardButton("Click here to Continue", url=link)],
+                    [InlineKeyboardButton('Verification Tutorial', url=TUT_VID)]
                 ]
                 await message.reply(f"𝐇𝐞𝐲, 𝐲𝐨𝐮𝐫 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧 𝐡𝐚𝐬 𝐞𝐱𝐩𝐢𝐫𝐞𝐝! 𝐉𝐮𝐬𝐭 𝐫𝐞𝐟𝐫𝐞𝐬𝐡 𝐢𝐭 𝐚𝐧𝐝 𝐭𝐫𝐲 𝐚𝐠𝐚𝐢𝐧..\n\n𝐁𝐲 𝐭𝐡𝐞 𝐰𝐚𝐲, 𝐭𝐡𝐞 𝐭𝐨𝐤𝐞𝐧 𝐭𝐢𝐦𝐞𝐬 𝐨𝐮𝐭 𝐚𝐟𝐭𝐞𝐫 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬.\n\n𝐒𝐨, 𝐰𝐡𝐚𝐭'𝐬 𝐭𝐡𝐢𝐬 𝐭𝐨𝐤𝐞𝐧 𝐭𝐡𝐢𝐧𝐠𝐲?\n\n𝐈𝐭'𝐬 𝐚𝐧 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧, 𝐝𝐮𝐝𝐞! 𝐈𝐟 𝐲𝐨𝐮 𝐰𝐚𝐭𝐜𝐡 𝐣𝐮𝐬𝐭 𝐨𝐧𝐞 𝐚𝐝, 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭 𝐟𝐨𝐫 𝐚 𝐰𝐡𝐨𝐥𝐞 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬 𝐚𝐟𝐭𝐞𝐫 𝐭𝐡𝐚𝐭. 𝐒𝐰𝐞𝐞𝐭 𝐝𝐞𝐚𝐥, 𝐫𝐢𝐠𝐡𝐭?", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
-
-# ... (rest of the code remains unchanged))
-
+                 
 
 
-    
-        
-#=====================================================================================##
+WAIT_MSG = "<b>ᴡᴏʀᴋɪɴɢ....</b>"
 
-WAIT_MSG = """"<b>Processing ...</b>"""
+REPLY_ERROR = "<code>Use this command as a reply to any telegram message without any spaces.</code>"
 
-REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
-#=====================================================================================##
-
-    
-    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
-        [
+         [
             InlineKeyboardButton(
                 "Join Channel",
                 url = client.invitelink)
@@ -219,7 +211,7 @@ async def not_joined(client: Client, message: Message):
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
     users = await full_userbase()
-    await msg.edit(f"{len(users)} users are using this bot")
+    await msg.edit(f"{len(users)} ᴜꜱᴇʀꜱ ᴀʀᴇ ᴜꜱɪɴɢ ᴛʜɪꜱ ʙᴏᴛ")
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
@@ -232,7 +224,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
         
-        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
+        pls_wait = await message.reply("<i>ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴘʀᴏᴄᴇꜱꜱɪɴɢ ᴛɪʟʟ ᴡᴀɪᴛ ʙʀᴏᴏ... </i>")
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -247,18 +239,18 @@ async def send_text(client: Bot, message: Message):
             except InputUserDeactivated:
                 await del_user(chat_id)
                 deleted += 1
-            except:
+            except Exception as e:
                 unsuccessful += 1
-                pass
+                logging.error(f"Broadcast Error: {e}")
             total += 1
         
-        status = f"""<b><u>Broadcast Completed</u>
+        status = f"""<b><u>ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ᴍʏ sᴇɴᴘᴀɪ!!</u>
 
-Total Users: <code>{total}</code>
-Successful: <code>{successful}</code>
-Blocked Users: <code>{blocked}</code>
-Deleted Accounts: <code>{deleted}</code>
-Unsuccessful: <code>{unsuccessful}</code></b>"""
+ᴛᴏᴛᴀʟ ᴜꜱᴇʀꜱ: <code>{total}</code>
+ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟ: <code>{successful}</code>
+ʙʟᴏᴄᴋᴇᴅ ᴜꜱᴇʀꜱ: <code>{blocked}</code>
+ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛꜱ: <code>{deleted}</code>
+ᴜɴꜱᴜᴄᴄᴇꜱꜱꜰᴜʟ: <code>{unsuccessful}</code></b></b>"""
         
         return await pls_wait.edit(status)
 
