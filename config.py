@@ -22,10 +22,10 @@ OWNER_ID = int(os.environ.get("OWNER_ID", "6710996831"))
 PORT = os.environ.get("PORT", "8000")
 
 #Database 
-Database [https://youtu.be/qFB0cFqiyOM?si=fVicsCcRSmpuja1A]
-DB_URI = "mongodb+srv://wicidev806:b9zm6GzbC7Y5lHWR@cluster0.qsx9a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# Database [https://youtu.be/qFB0cFqiyOM?si=fVicsCcRSmpuja1A]
+# DB_URI = "mongodb+srv://wicidev806:b9zm6GzbC7Y5lHWR@cluster0.qsx9a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 #Database 
-# DB_URI = "mongodb+srv://cluster0:qwertyuiop@cluster0.s7zfm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+DB_URI = "mongodb+srv://cluster0:qwertyuiop@cluster0.s7zfm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 #Database [https://youtu.be/qFB0cFqiyOM?si=fVicsCcRSmpuja1A]
 DB_NAME = os.environ.get("DATABASE_NAME", "Cluster0")
 
