@@ -161,10 +161,10 @@ async def start_command(client: Client, message: Message):
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API,f'https://telegram.dog/{client.username}?start=verify_{token}')
                 btn = [
-                  [InlineKeyboardButton("Click here to Continue", url=link)],
-                    [InlineKeyboardButton('Verification Tutorial', url=TUT_VID)]
+                  [InlineKeyboardButton("Click here to verify", url=link)],
+                    [InlineKeyboardButton('How to verify', url=TUT_VID)]
                 ]
-                await message.reply(f"𝐇𝐞𝐲, 𝐲𝐨𝐮𝐫 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧 𝐡𝐚𝐬 𝐞𝐱𝐩𝐢𝐫𝐞𝐝! 𝐉𝐮𝐬𝐭 𝐫𝐞𝐟𝐫𝐞𝐬𝐡 𝐢𝐭 𝐚𝐧𝐝 𝐭𝐫𝐲 𝐚𝐠𝐚𝐢𝐧..\n\n𝐁𝐲 𝐭𝐡𝐞 𝐰𝐚𝐲, 𝐭𝐡𝐞 𝐭𝐨𝐤𝐞𝐧 𝐭𝐢𝐦𝐞𝐬 𝐨𝐮𝐭 𝐚𝐟𝐭𝐞𝐫 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬.\n\n𝐒𝐨, 𝐰𝐡𝐚𝐭'𝐬 𝐭𝐡𝐢𝐬 𝐭𝐨𝐤𝐞𝐧 𝐭𝐡𝐢𝐧𝐠𝐲?\n\n𝐈𝐭'𝐬 𝐚𝐧 𝐚𝐝𝐬 𝐭𝐨𝐤𝐞𝐧, 𝐝𝐮𝐝𝐞! 𝐈𝐟 𝐲𝐨𝐮 𝐰𝐚𝐭𝐜𝐡 𝐣𝐮𝐬𝐭 𝐨𝐧𝐞 𝐚𝐝, 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭 𝐟𝐨𝐫 𝐚 𝐰𝐡𝐨𝐥𝐞 𝟐𝟒 𝐡𝐨𝐮𝐫𝐬 𝐚𝐟𝐭𝐞𝐫 𝐭𝐡𝐚𝐭. 𝐒𝐰𝐞𝐞𝐭 𝐝𝐞𝐚𝐥, 𝐫𝐢𝐠𝐡𝐭?", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"𝐇𝐞𝐲, 𝗧𝗵𝗲𝗿𝗲\n\n𝘆𝗼𝘂'𝗿𝗲 𝗻𝗼𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗲𝗱 𝘁𝗼𝗱𝗮𝘆. 𝗝𝘂𝘀𝘁 𝘃𝗲𝗿𝗶𝗳𝘆 𝗮𝗻𝗱 𝘆𝗼𝘂'𝗹𝗹 𝗴𝗲𝘁 𝘂𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗮𝗰𝗰𝗲𝘀𝘀 𝘂𝗻𝘁𝗶𝗹 𝗻𝗲𝘅𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
                  
 
 
