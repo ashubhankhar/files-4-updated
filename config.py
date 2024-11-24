@@ -33,7 +33,7 @@ DB_NAME = os.environ.get("DATABASE_NAME", "Cluster0")
 # check my discription to help by using my refer link of shareus.io
 # 
 
-SHORTLINK_URL = os.environ.get("SHORTLINK_URL", "publicearn.com")
+SHORTLINK_URL = os.environ.get("SHORTLINK_URL", "publicearn.in")
 SHORTLINK_API = os.environ.get("SHORTLINK_API", "9cf7ecb5b4707087b91bf1262b76d97e5417ffa0")
 VERIFY_EXPIRE = int(os.environ.get('VERIFY_EXPIRE', 43200)) # Add time in seconds
 IS_VERIFY = os.environ.get("IS_VERIFY", "True")
