@@ -164,7 +164,7 @@ async def start_command(client: Client, message: Message):
                   [InlineKeyboardButton("Click here to verify", url=link)],
                     [InlineKeyboardButton('How to download', url=TUT_VID)]
                 ]
-                await message.reply(f"𝐇𝐞𝐲, 𝗧𝗵𝗲𝗿𝗲\n\n𝘆𝗼𝘂'𝗿𝗲 𝗻𝗼𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗲𝗱 𝘁𝗼𝗱𝗮𝘆. 𝗝𝘂𝘀𝘁 𝘃𝗲𝗿𝗶𝗳𝘆 𝗮𝗻𝗱 𝘆𝗼𝘂'𝗹𝗹 𝗴𝗲𝘁 𝘂𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗮𝗰𝗰𝗲𝘀𝘀 𝘂𝗻𝘁𝗶𝗹 𝗻𝗲𝘅𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"(っ◔◡◔)っ ♥️\n\n𝐇𝐞𝐲, 𝗧𝗵𝗲𝗿𝗲\n\n𝘆𝗼𝘂'𝗿𝗲 𝗻𝗼𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗲𝗱 𝘁𝗼𝗱𝗮𝘆. 𝗝𝘂𝘀𝘁 𝘃𝗲𝗿𝗶𝗳𝘆 𝗮𝗻𝗱 𝘆𝗼𝘂'𝗹𝗹 𝗴𝗲𝘁 𝘂𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗮𝗰𝗰𝗲𝘀𝘀 𝘂𝗻𝘁𝗶𝗹 𝗻𝗲𝘅𝘁 𝘃𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
                  
 
 
